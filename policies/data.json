@@ -1,1 +1,8 @@
-{}
+{
+  "approved_nodegroup_statuses": [
+    "ACTIVE"
+  ],
+  "require_nodegroup_scaling_headroom": true,
+  "minimum_nodegroup_scaling_headroom": 1,
+  "minimum_nodegroup_subnet_count": 2
+}
