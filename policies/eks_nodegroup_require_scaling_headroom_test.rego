@@ -51,6 +51,16 @@ test_no_violation_when_scaling_headroom_not_required if {
 		with data.require_nodegroup_scaling_headroom as false
 }
 
+test_no_violation_when_headroom_exactly_at_default_minimum if {
+	count(violation) == 0 with input as {"nodegroup_context": {"current": {
+		"desired_size": 3,
+		"min_size": 2,
+		"max_size": 4,
+		"scale_out_headroom": 1,
+		"desired_at_or_above_min": true,
+	}}}
+}
+
 test_no_violation_with_custom_minimum_headroom if {
 	count(violation) == 0 with input as {"nodegroup_context": {"current": {
 		"desired_size": 3,
