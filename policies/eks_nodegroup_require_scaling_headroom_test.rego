@@ -48,7 +48,7 @@ test_no_violation_when_scaling_headroom_not_required if {
 		"scale_out_headroom": null,
 		"desired_at_or_above_min": null,
 	}}}
-		with data.require_nodegroup_scaling_headroom as false
+		with data.require_nodegroup_scaling_headroom as false # regal ignore:unresolved-reference
 }
 
 test_no_violation_when_headroom_exactly_at_default_minimum if {
@@ -69,5 +69,5 @@ test_no_violation_with_custom_minimum_headroom if {
 		"scale_out_headroom": 0,
 		"desired_at_or_above_min": true,
 	}}}
-		with data.minimum_nodegroup_scaling_headroom as 0
+		with data.minimum_nodegroup_scaling_headroom as 0 # regal ignore:unresolved-reference
 }

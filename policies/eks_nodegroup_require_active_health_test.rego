@@ -14,5 +14,5 @@ test_violation_when_nodegroup_has_health_issues if {
 
 test_no_violation_custom_approved_status if {
 	count(violation) == 0 with input as {"nodegroup_context": {"current": {"status": "UPDATING", "health_issue_count": 0}}}
-		with data.approved_nodegroup_statuses as ["UPDATING"]
+		with data.approved_nodegroup_statuses as ["UPDATING"] # regal ignore:unresolved-reference
 }
