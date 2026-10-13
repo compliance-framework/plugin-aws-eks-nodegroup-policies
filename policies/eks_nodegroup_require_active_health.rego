@@ -18,7 +18,7 @@ violation[{"id": "eks_nodegroup_health_issues_present"}] if {
 }
 
 approved_nodegroup_status if {
-	status := data.approved_nodegroup_statuses[_]
+	status := data.approved_nodegroup_statuses[_] # regal ignore:unresolved-reference
 	nodegroup_status == status
 }
 
@@ -33,37 +33,37 @@ description := "EKS managed node group status should be ACTIVE and EKS should re
 
 risk_templates := [
 	{
-		"name":            "EKS node group is not active",
-		"title":           "EKS managed node group is not in ACTIVE state",
-		"statement":       "The node group is not reporting an ACTIVE status, which may indicate a provisioning failure or degraded state that prevents workload scheduling.",
+		"name": "EKS node group is not active",
+		"title": "EKS managed node group is not in ACTIVE state",
+		"statement": "The node group is not reporting an ACTIVE status, which may indicate a provisioning failure or degraded state that prevents workload scheduling.",
 		"likelihood_hint": "low",
-		"impact_hint":     "high",
-		"violation_ids":   ["eks_nodegroup_not_active"],
+		"impact_hint": "high",
+		"violation_ids": ["eks_nodegroup_not_active"],
 		"remediation": {
-			"title":       "Investigate and restore node group to ACTIVE state",
+			"title": "Investigate and restore node group to ACTIVE state",
 			"description": "Review EKS node group events and AWS health dashboard to identify the cause of the non-ACTIVE state.",
 			"tasks": [
 				{"title": "Check node group status and events in the EKS console or via AWS CLI"},
 				{"title": "Review EC2 instance health for nodes in the group"},
-				{"title": "Contact AWS support if the node group is stuck in a transitional state"}
-			]
-		}
+				{"title": "Contact AWS support if the node group is stuck in a transitional state"},
+			],
+		},
 	},
 	{
-		"name":            "EKS node group has unresolved health issues",
-		"title":           "EKS managed node group has unresolved health issues reported by AWS",
-		"statement":       "AWS has reported one or more unresolved health issues for this node group that may affect the availability of worker nodes for workload scheduling.",
+		"name": "EKS node group has unresolved health issues",
+		"title": "EKS managed node group has unresolved health issues reported by AWS",
+		"statement": "AWS has reported one or more unresolved health issues for this node group that may affect the availability of worker nodes for workload scheduling.",
 		"likelihood_hint": "medium",
-		"impact_hint":     "high",
-		"violation_ids":   ["eks_nodegroup_health_issues_present"],
+		"impact_hint": "high",
+		"violation_ids": ["eks_nodegroup_health_issues_present"],
 		"remediation": {
-			"title":       "Resolve EKS node group health issues",
+			"title": "Resolve EKS node group health issues",
 			"description": "Review the node group health dashboard for specific issue codes and follow AWS remediation guidance for each issue type.",
 			"tasks": [
 				{"title": "Review node group health issues via the EKS console or AWS CLI"},
 				{"title": "Address root cause of each reported health issue"},
-				{"title": "Verify health issue count returns to zero after remediation"}
-			]
-		}
+				{"title": "Verify health issue count returns to zero after remediation"},
+			],
+		},
 	},
 ]
