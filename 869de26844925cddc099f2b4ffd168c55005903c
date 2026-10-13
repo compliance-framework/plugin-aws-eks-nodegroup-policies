@@ -3,3 +3,7 @@ lisa-design:
 - Manifest seeded at 0.1.0: releases/latest is v0.1.0 (vX.Y.Z), its commit 5435e0c is an ancestor of master, so no bootstrap-sha.
 - No version.txt added by hand; release-please adds it in the first release PR.
 - README unchanged: its Bundling section is the local `make build`, not releasing.
+
+lisa-selfreview:
+- Pass 1 (core, rego-policy): no findings. actionlint v1.7.12 clean; OPA 1.14.1 check ok, test 15/15; old `opa build -b policies` and new `opa build --bundle policies` tarballs are byte-identical.
+- Known, reported not fixed: GitHub release loses the bundle.tar.gz asset; gooci pinned v0.0.7 (old used @latest = v0.0.8, a download-side extraction fix only).
