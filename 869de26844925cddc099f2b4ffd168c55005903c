@@ -1,0 +1,5 @@
+lisa-design:
+- Callers copied from mock-plugin-policies-1 (identical to merged plugin-local-ssh-policies#14) with pins at workflows v1.5.2 (6e7fc9c) and push branches [master]; the repo keeps master as default.
+- Manifest seeded at 0.1.0: releases/latest is v0.1.0 (vX.Y.Z), its commit 5435e0c is an ancestor of master, so no bootstrap-sha.
+- No version.txt added by hand; release-please adds it in the first release PR.
+- README unchanged: its Bundling section is the local `make build`, not releasing.
